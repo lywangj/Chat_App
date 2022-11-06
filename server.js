@@ -9,20 +9,17 @@ mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true }).t
 
 io.on('connection', (socket) => {
     Msg.find().then(result => {
-        socket.emit('output-messages', result)   //
+        socket.emit('output-messages', result)
     })
     console.log('a user connected');
-    // socket.emit('message', 'Hello world');       //
     socket.on('disconnect', () => {
         console.log('user disconnected');
     });
-    socket.on('chatmessage', (user, msg) => {            //
+    socket.on('chatmessage', (user, msg) => {
         console.log(user + ' sends a msg: '+ msg);
-        const message = new Msg({ msg });
+        const message = new Msg({ user, msg });
         message.save().then(() => {
-            io.emit('message', user, msg)              //
+            io.emit('message', user, msg)
         })
-
-
     })
 });

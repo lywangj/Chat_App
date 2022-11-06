@@ -11,8 +11,7 @@ socket.on('output-messages', data => {
     console.log(data)
     if (data.length) {
         data.forEach(message => {
-            // var username = "User";
-            appendMessages(message.msg, message.msg)
+            appendMessages(message.user, message.msg)
         });
     }
 })
@@ -26,13 +25,6 @@ msgForm.addEventListener('submit', e => {
 })
 
 function appendMessages(user, message) {
-    const html = `<div>${user} + ${message}</div>`
+    const html = `<div>${user} : ${message}</div>`
     messages.innerHTML += html
-    // var message = document.createElement('div');
-    // message.setAttribute('class', 'chat-message');
-    // message.textContent = ${message}+": "+message;
-    // // message.textContent = data[x].name+": "+data[x].message;
-    // console.log(message.msg);
-    // messages.appendChild(message);
-    // messages.insertBefore(message, messages.firstChild);
 }
