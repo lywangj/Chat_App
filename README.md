@@ -7,7 +7,7 @@ Data is stored and accessed using `MongoDB` `Atlas`.
 ## Client
 
 
-<img src="2022-11-06_142720.png" height="380">
+<img src="2022-11-06_142720.png" height="320">
 
 ## Server
 
